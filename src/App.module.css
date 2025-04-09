@@ -1,0 +1,30 @@
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    height: 100vh;
+    padding: 16px;
+    background-color: rgb(179, 178, 178);
+}
+  
+.Header {
+    text-align: center;
+}
+  
+.Logo {
+    width: 64px;
+    height: 64px;
+}
+  
+.Title {
+    margin: 0;
+}
+  
+.ChatContainer {
+    flex-grow: 1;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 16px;
+    overflow-y: auto;
+}
