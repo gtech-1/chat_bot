@@ -1,41 +1,48 @@
-import React, { useState } from 'react'
-import styles from "./Control.module.css"
+import React, { useState } from 'react';
+import styles from "./Control.module.css";
 import { IoSend } from "react-icons/io5";
-
-const Control = ({onSend}) => {
-    const [content,setContent]=useState("");
+import TextareaAutosize from 'react-textarea-autosize';
 
 
-    const handleContentSend=()=>{
-        if(content.length===0){
-            console.log("no input recieved")
-        }
-        onSend(content)
-        setContent("")
+const Control = ({ onSend }) => {
+  const [content, setContent] = useState("");
+
+  const handleContentSend = () => {
+    const trimmed = content.trim();
+    if (trimmed.length === 0) {
+      console.log("No input received");
+      return;
     }
+    onSend(trimmed);
+    setContent("");
+  };
 
-    const handleEnterPress=(e)=>{
-        if(e.key==="Enter" && !e.shiftKey){
-            e.preventDefault()
-            handleContentSend()
-        }
+  const handleEnterPress = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleContentSend();
     }
+  };
 
   return (
-    <div className={styles.Controls }>
-        <div className='w-[100%]'>
-        <textarea
+    <div className={styles.Controls}>
+      <div className="w-[100%]">
+        <TextareaAutosize
           autoFocus
           value={content}
           className={`${styles.TextArea} rounded-lg`}
+          minRows={1}
+          maxRows={4}
           placeholder="Message AI Chatbot"
-          onChange={e=>setContent(e.target.value)} 
+          onChange={(e) => setContent(e.target.value)}
           onKeyDown={handleEnterPress}
-        ></textarea>
+        ></TextareaAutosize>
       </div>
-        <button onClick={handleContentSend} className={styles.Button}><IoSend/></button>
+      <button onClick={handleContentSend} className={styles.Button}>
+        <IoSend />
+      </button>
     </div>
-  )
-}
+  );
+};
 
-export default Control
+export default Control;

@@ -1,6 +1,7 @@
 import './App.css';
 import { useState } from 'react';
 import { Assistant } from './assistants/googleAi';
+// import { Assistant } from './assistants/openAi';
 // import { GoogleGenerativeAI } from "@google/generative-ai";
 
 import styles from "./App.module.css";
@@ -20,6 +21,8 @@ function App() {
     if (!content.trim()) return;
     addMessage({ role: "user", content });
     try {
+      // const result = await assistant.chat(content, messages);
+      // addMessage({ role: "assistant", content: result });
       const result = await assistant.chat(content);
       addMessage({ role: "assistant", content: [result] });
     } catch (error) {

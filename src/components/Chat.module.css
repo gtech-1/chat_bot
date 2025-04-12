@@ -21,4 +21,19 @@
     align-self: flex-end;
     background: #f3f3f3;
   }
+
+  .Markdown {
+    font-size: 16px;
+    white-space: pre-wrap;
+  }
+/*   
+  .Paragraph {
+    line-height: 1.8;
+  } */
+  
+  .List {
+    padding-left: 1.5rem;
+    list-style-type: disc;
+  }
+  
   
